@@ -18,6 +18,13 @@ module.exports = {
     port: 8080,
     hot: true,
     historyApiFallback: true,
+    proxy: [
+      {
+        context: ["/api"],
+        target: "http://localhost:3001",
+        changeOrigin: true,
+      },
+    ],
   },
   resolve: {
     extensions: [".js", ".jsx", ".css"],
@@ -37,6 +44,10 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(png)$/i,
+        type: "asset/resource",
       },
     ],
   },

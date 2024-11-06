@@ -1,27 +1,42 @@
-import React from "react";
-import Header from "../components/Header";
-import "./style";
+import React, { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
+import "./mainPageStyle";
 
-import CssBaseline from "@mui/material/CssBaseline";
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { Typography } from "@mui/material";
+import QuestionsTable from "../components/QuestionsTable";
+import getAllQuestions from "../api/getAllQuestions";
 
-// export default function FixedContainer() {
-//   return (
+import bank from "../assets/bank.png";
 
-//   );
-// }
 const MainPage = () => {
+  const [questions, setQuestions] = useState(null);
+  useEffect(() => {
+    const loadData = async () => {
+      const result = await getAllQuestions();
+      setQuestions(result);
+      console.log("result", result);
+      console.log("questions", questions);
+    };
+    loadData();
+  }, []);
   return (
     <>
-      <Header />
-
+      <Navbar />
       <Container fixed>
-        <Typography variant="h1" component="h2">
-          Bank of System Design
+        <div className="main-headline">
+          <img src={bank} className="bank-logo" />
+          <Typography variant="h2" component="h2">
+            Bank of System Design
+          </Typography>
+        </div>
+        <Typography variant="h3" component="h3" sx={{ marginTop: "3rem" }}>
+          Problems
         </Typography>
-        <h1>this is the main page</h1>
+        <Typography variant="h5" component="h5">
+          Select a System Design problem you'd like to work on!
+        </Typography>
+        {questions ? <QuestionsTable rows={questions} /> : null}
       </Container>
     </>
   );
