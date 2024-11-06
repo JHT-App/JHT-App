@@ -1,5 +1,5 @@
 .bank-logo {
-  width: 100px;
+  width: 80px;
 }
 .main-headline {
   display: flex;
@@ -10,4 +10,5 @@
 
 .main-headline h2 {
   margin-left: 1rem;
+  font-family: 'Pirata One', system-ui;
 }
