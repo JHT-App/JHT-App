@@ -1,0 +1,13 @@
+.bank-logo {
+  width: 100px;
+}
+.main-headline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+.main-headline h2 {
+  margin-left: 1rem;
+}

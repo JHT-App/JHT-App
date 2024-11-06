@@ -19,8 +19,17 @@ module.exports = {
     port: 8080,
     hot: true,
     historyApiFallback: true,
+    proxy: [
+      {
+        context: ['/api'],
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      },
+    ],
   },
-
+  resolve: {
+    extensions: ['.js', '.jsx', '.css'],
+  },
   resolve: {
     alias: {
       process: 'process/browser',
@@ -47,12 +56,17 @@ module.exports = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(png)$/i,
+        type: 'asset/resource',
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html',
     }),
+
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
       process: 'process/browser',
