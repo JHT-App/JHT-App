@@ -3,8 +3,8 @@
  *
  */
 const getAllQuestions = async () => {
+  const url = "/api/questions-test";
   try {
-    const url = "/api/questions-test";
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(
@@ -17,7 +17,7 @@ const getAllQuestions = async () => {
     return json;
   } catch (e) {
     console.error(
-      `Get all questions request error when requesting ${url}: ${e} `
+      `Get all questions request error when requesting ${url}: ${e}`
     );
   }
 };
