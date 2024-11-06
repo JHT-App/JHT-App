@@ -1,6 +1,12 @@
 const { Pool } = require('pg');
 require('dotenv').config();
 
+/*
+once the backend is ran, the database will be automatically initialized with the TinyUrl Data. 
+if you need to checkout the database, use below command: 
+psql -h 18.119.2.80 -p 5432 -U postgres -d database-1
+passoword is attached below as well
+*/
 const pool = new Pool({
   user: `postgres`, // Your RDS master username
   host: `database-1.cxkmwqko4ku9.us-east-2.rds.amazonaws.com`, // Your RDS endpoint
