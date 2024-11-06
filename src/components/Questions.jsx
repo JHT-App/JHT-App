@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Excalidraw } from '@excalidraw/excalidraw';
 
-const Main = () => {
+const Questions = () => {
   return (
     <div>
       <nav className='navBar'>
@@ -30,4 +30,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Questions;

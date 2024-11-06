@@ -66,8 +66,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'index.html',
     }),
-
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
       process: 'process/browser',
     }),

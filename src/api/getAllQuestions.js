@@ -1,9 +1,5 @@
-/**
- *
- *
- */
 const getAllQuestions = async () => {
-  const url = "/api/questions-test";
+  const url = '/api/questions-test';
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -11,10 +7,10 @@ const getAllQuestions = async () => {
         `Response code was not ok requesting ${url}.  Response: ${response}`
       );
     }
-    const json = await response.json();
-    console.log("json", json);
-    console.log("response", response);
-    return json;
+    const data = await response.json();
+    console.log('data', data);
+    console.log('response', response);
+    return data;
   } catch (e) {
     console.error(
       `Get all questions request error when requesting ${url}: ${e}`
