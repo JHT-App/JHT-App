@@ -9,6 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    publicPath: '/',
   },
 
   devServer: {
@@ -18,6 +19,16 @@ module.exports = {
     port: 8080,
     hot: true,
     historyApiFallback: true,
+  },
+
+  resolve: {
+    alias: {
+      process: 'process/browser',
+    },
+    fallback: {
+      'process': require.resolve('process/browser'),
+    },
+    extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
   },
 
   module: {
@@ -33,14 +44,18 @@ module.exports = {
         },
       },
       {
-        test: /\.scss$/i,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html',
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
     }),
   ],
 };
